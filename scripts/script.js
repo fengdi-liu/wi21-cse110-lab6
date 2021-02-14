@@ -12,6 +12,7 @@ window.addEventListener('DOMContentLoaded', () => {
     .then (res => res.json())
     .then(data => console.log(data))
     .catch(error => console.log('ERROR'))
+    localStorage.setItem('title', 'description')
    }
 
 });
