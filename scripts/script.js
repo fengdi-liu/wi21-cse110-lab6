@@ -31,7 +31,7 @@ window.addEventListener('DOMContentLoaded', () => {
     console.log('displayData called.')
     let products = document.getElementById('product-list')
 
-    for (var i = 1; i <= localStorage.length; i++) {
+    for (var i = 0; i < localStorage.length; i++) {
       let product = document.createElement("product-item");
       let prod = product.shadowRoot;
       let item = JSON.parse(localStorage[i]);
