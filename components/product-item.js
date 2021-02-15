@@ -4,41 +4,41 @@ template.innerHTML = `<li class="product">
 <img width=200>
 <p class="title"></p>
 <p class="price"></p>
-<button>Add to Cart</button>
+<button id="cart-button">Add to Cart</button>
 </li>`;
+
 class ProductItem extends HTMLElement {
   constructor() {
-    super(); 
+    super();
 
-    this.attachShadow({mode: 'open'});
+    this.attachShadow({ mode: 'open' });
     this.shadowRoot.appendChild(template.content.cloneNode(true));
 
-    let button = document.createElement('Button');
+    let button = this.shadowRoot.querySelector('#cart-button');
 
-    
-    button.textContent = 'Add to Cart'; 
-    button.onclick=()=>{
-      if(button.textContent == "Add to Cart"){
+    button.onclick = function(e) {
+      let cartCount = document.querySelector("#cart-count");
+      if (button.textContent == "Add to Cart") {
         alert('Add to Cart');
         button.textContent = 'Remove From Cart';
-        cartCount.innerText = (Number(cartCount.innerText)+1).toString();
+        cartCount.innerText = (Number(cartCount.innerText) + 1).toString();
       }
-      else{
+      else {
         alert('Remove From Cart');
-        button.textContent= 'Add to Cart';
-        cartCount.innerText = (Number(cartCount.innerText)-1).toString();
+        button.textContent = 'Add to Cart';
+        cartCount.innerText = (Number(cartCount.innerText) - 1).toString();
       }
-
-      button.textContent = 'Add to Cart';
-      this.templete.append(botton);
-      this.shadowRoot.append(templete.content);
-
     }
-
   }
 
+  // connectedCallback() {
+  //   console.log('connectedCallback')
+  //   this.shadowRoot.querySelector('#cart-button').addEventListener('click', () => this.toggleCart());
+  // }
 
-  
+  // disconnectedCallback() {
+  //   this.shadowRoot.querySelector('#cart-button').removeEventListener();
+  // }
 }
 
 customElements.define('product-item', ProductItem);
