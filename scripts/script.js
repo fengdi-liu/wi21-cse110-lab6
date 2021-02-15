@@ -31,15 +31,17 @@ window.addEventListener('DOMContentLoaded', () => {
     console.log('displayData called.')
     let products = document.getElementById('product-list')
 
-    for (var i = 0; i < localStorage.length; i++) {
+    for (var i = 0; i <=localStorage.length; i++) {
       let product = document.createElement("product-item");
       let prod = product.shadowRoot;
+      if(localStorage[i]!=null){
       let item = JSON.parse(localStorage[i]);
       prod.querySelector('.price').textContent = "$" + item.price;
       prod.querySelector('.title').textContent = item.title;
       prod.querySelector('img').src = item.image;
       prod.querySelector('img').alt = item.title;
       products.appendChild(prod);
+      }
     };
   }
 
