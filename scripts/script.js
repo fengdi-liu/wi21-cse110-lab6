@@ -15,7 +15,7 @@ window.addEventListener('DOMContentLoaded', () => {
         fillData(data);
         displayData();
       })
-      .catch(error => console.log(error))
+    //  .catch(error => console.log(error))
   }
 
   function fillData(data) {
@@ -27,7 +27,7 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 
   function displayData() {
-    debugger;
+
     console.log('displayData called.')
     let products = document.getElementById('product-list')
 
